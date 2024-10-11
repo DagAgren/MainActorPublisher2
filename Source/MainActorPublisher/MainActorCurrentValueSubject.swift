@@ -3,6 +3,10 @@ import Combine
 public struct MainActorCurrentValueSubject<Output, Failure: Error>: Publisher {
     private let currentValueSubject: CurrentValueSubject<Output, Failure>
 
+    public init(_ value: Output) {
+        self.currentValueSubject = .init(value)
+    }
+
     @MainActor public var value: Output {
         get { currentValueSubject.value }
         set { currentValueSubject.value = newValue }
