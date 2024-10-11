@@ -58,3 +58,4 @@ extension Publishers.RemoveDuplicates: MainActorPublisher where Upstream: MainAc
 extension Publishers.DropWhile: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.Drop: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.Output: MainActorPublisher where Upstream: MainActorPublisher {}
+extension Publishers.Throttle: MainActorPublisher where Upstream: MainActorPublisher, Context == UIScheduler2000 {}
