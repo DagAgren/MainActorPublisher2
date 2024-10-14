@@ -36,6 +36,7 @@ extension Publisher {
 // TODO: Finish this list.
 extension Publishers.Map: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.CompactMap: MainActorPublisher where Upstream: MainActorPublisher {}
+extension Publishers.FlatMap: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.Filter: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.TryFilter: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.PrefixWhile: MainActorPublisher where Upstream: MainActorPublisher {}
@@ -59,3 +60,5 @@ extension Publishers.DropWhile: MainActorPublisher where Upstream: MainActorPubl
 extension Publishers.Drop: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.Output: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.Throttle: MainActorPublisher where Upstream: MainActorPublisher, Context == UIScheduler2000 {}
+extension Publishers.Catch: MainActorPublisher where Upstream: MainActorPublisher {}
+extension Empty: MainActorPublisher {}
