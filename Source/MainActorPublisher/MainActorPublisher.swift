@@ -60,5 +60,7 @@ extension Publishers.DropWhile: MainActorPublisher where Upstream: MainActorPubl
 extension Publishers.Drop: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.Output: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.Throttle: MainActorPublisher where Upstream: MainActorPublisher, Context == UIScheduler2000 {}
+extension Publishers.Debounce: MainActorPublisher where Upstream: MainActorPublisher, Context == UIScheduler2000 {}
 extension Publishers.Catch: MainActorPublisher where Upstream: MainActorPublisher {}
+
 extension Empty: MainActorPublisher {}
