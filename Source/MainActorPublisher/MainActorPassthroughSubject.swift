@@ -13,6 +13,10 @@ public struct MainActorPassthroughSubject<Output, Failure: Error>: MainActorPubl
         passthroughSubject.send(input)
     }
 
+    @MainActor public func send() where Output == Void {
+        passthroughSubject.send()
+    }
+
     @MainActor public func send(completion: Subscribers.Completion<Failure>) {
         passthroughSubject.send(completion: completion)
     }
