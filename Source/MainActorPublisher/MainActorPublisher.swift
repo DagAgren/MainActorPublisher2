@@ -64,6 +64,7 @@ extension Publishers.Debounce: MainActorPublisher where Upstream: MainActorPubli
 extension Publishers.Catch: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.Autoconnect: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.SetFailureType: MainActorPublisher where Upstream: MainActorPublisher {}
+extension Publishers.HandleEvents: MainActorPublisher where Upstream: MainActorPublisher {}
 
 extension Just: MainActorPublisher {}
 extension Empty: MainActorPublisher {}
