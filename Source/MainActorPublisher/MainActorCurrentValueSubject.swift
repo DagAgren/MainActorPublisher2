@@ -1,6 +1,6 @@
 import Combine
 
-public struct MainActorCurrentValueSubject<Output, Failure: Error>: Publisher {
+public final class MainActorCurrentValueSubject<Output, Failure: Error>: MainActorPublisher {
     private let currentValueSubject: CurrentValueSubject<Output, Failure>
 
     public init(_ value: Output) {

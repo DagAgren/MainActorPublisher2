@@ -69,3 +69,4 @@ extension Publishers.Delay: MainActorPublisher where Upstream: MainActorPublishe
 
 extension Just: MainActorPublisher {}
 extension Empty: MainActorPublisher {}
+extension Fail: MainActorPublisher {}
