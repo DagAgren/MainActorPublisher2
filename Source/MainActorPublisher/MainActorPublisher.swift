@@ -65,6 +65,7 @@ extension Publishers.Catch: MainActorPublisher where Upstream: MainActorPublishe
 extension Publishers.Autoconnect: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.SetFailureType: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.HandleEvents: MainActorPublisher where Upstream: MainActorPublisher {}
+extension Publishers.Delay: MainActorPublisher where Upstream: MainActorPublisher, Context == UIScheduler2000 {}
 
 extension Just: MainActorPublisher {}
 extension Empty: MainActorPublisher {}
