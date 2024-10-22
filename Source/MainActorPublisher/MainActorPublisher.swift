@@ -72,3 +72,21 @@ extension Publishers.TryMap: MainActorPublisher where Upstream: MainActorPublish
 extension Just: MainActorPublisher {}
 extension Empty: MainActorPublisher {}
 extension Fail: MainActorPublisher {}
+
+extension MainActorPublisher {
+    public func throttle(for interval: UIScheduler2000.SchedulerTimeType.Stride, latest: Bool = true) -> Publishers.Throttle<Self, UIScheduler2000> {
+        return throttle(for: interval, scheduler: UIScheduler2000.shared, latest: latest)
+    }
+
+    public func debounce(for dueTime: UIScheduler2000.SchedulerTimeType.Stride) -> Publishers.Debounce<Self, UIScheduler2000> {
+        return debounce(for: dueTime, scheduler: UIScheduler2000.shared)
+    }
+
+    public func delay(for interval: UIScheduler2000.SchedulerTimeType.Stride) -> Publishers.Delay<Self, UIScheduler2000> {
+        return delay(for: interval, scheduler: UIScheduler2000.shared)
+    }
+
+    public func timeout(_ interval: UIScheduler2000.SchedulerTimeType.Stride, customError: (() -> Self.Failure)? = nil) -> Publishers.Timeout<Self, UIScheduler2000> {
+        return timeout(interval, scheduler: UIScheduler2000.shared, customError: customError)
+    }
+}
