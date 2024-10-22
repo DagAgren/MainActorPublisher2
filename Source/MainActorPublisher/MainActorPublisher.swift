@@ -1,6 +1,5 @@
 import Combine
 import Foundation
-import DiamondDebounce
 
 public protocol MainActorPublisher: Publisher {}
 
@@ -67,7 +66,6 @@ extension Publishers.Catch: MainActorPublisher where Upstream: MainActorPublishe
 extension Publishers.Autoconnect: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.SetFailureType: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.HandleEvents: MainActorPublisher where Upstream: MainActorPublisher {}
-extension Publishers.DiamondDebounce: MainActorPublisher where Upstream: MainActorPublisher {}
 
 extension Just: MainActorPublisher {}
 extension Empty: MainActorPublisher {}
