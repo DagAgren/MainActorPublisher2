@@ -5,9 +5,13 @@ public struct MainActorFuture<Output, Failure: Error>: MainActorPublisher {
 
     private let future: Future<Output, Failure>
 
-    public init(_ attemptToFulfill: @escaping (@escaping Promise) -> Void) {
-        self.future = Future<Output, Failure> { promise in
-            attemptToFulfill(promise)
+    @MainActor public init(_ attemptToFulfill: @MainActor (@escaping Promise) -> Void) {
+        self.future = withoutActuallyEscaping(attemptToFulfill) { attemptToFulfill in
+            Future<Output, Failure> { promise in
+                attemptToFulfill {
+                    promise($0)
+                }
+            }
         }
     }
 
