@@ -16,9 +16,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "MainActorPublisher",
-            swiftSettings: [
-            ]
+            name: "MainActorPublisher"
         )
     ]
 )
