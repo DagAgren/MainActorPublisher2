@@ -55,6 +55,7 @@ extension Publishers.Merge5: MainActorPublisher where A: MainActorPublisher, B: 
 extension Publishers.Merge6: MainActorPublisher where A: MainActorPublisher, B: MainActorPublisher, C: MainActorPublisher, D: MainActorPublisher, E: MainActorPublisher, F: MainActorPublisher {}
 extension Publishers.Merge7: MainActorPublisher where A: MainActorPublisher, B: MainActorPublisher, C: MainActorPublisher, D: MainActorPublisher, E: MainActorPublisher, F: MainActorPublisher, G: MainActorPublisher {}
 extension Publishers.Merge8: MainActorPublisher where A: MainActorPublisher, B: MainActorPublisher, C: MainActorPublisher, D: MainActorPublisher, E: MainActorPublisher, F: MainActorPublisher, G: MainActorPublisher, H: MainActorPublisher {}
+extension Publishers.MergeMany: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.RemoveDuplicates: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.DropWhile: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.Drop: MainActorPublisher where Upstream: MainActorPublisher {}
@@ -68,6 +69,7 @@ extension Publishers.SetFailureType: MainActorPublisher where Upstream: MainActo
 extension Publishers.HandleEvents: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.Timeout: MainActorPublisher where Upstream: MainActorPublisher, Context == UIScheduler2000 {}
 extension Publishers.TryMap: MainActorPublisher where Upstream: MainActorPublisher {}
+extension Publishers.FirstWhere: MainActorPublisher where Upstream: MainActorPublisher {}
 
 extension Just: MainActorPublisher {}
 extension Empty: MainActorPublisher {}
