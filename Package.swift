@@ -1,4 +1,4 @@
-// swift-tools-version: 6.0
+// swift-tools-version: 5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -16,7 +16,21 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "MainActorPublisher"
+            name: "MainActorPublisher",
+            swiftSettings: [
+                .enableUpcomingFeature("ExistentialAny"),
+                .enableUpcomingFeature("IsolatedDefaultValues"),
+                .enableUpcomingFeature("ConciseMagicFile"),
+                .enableUpcomingFeature("DeprecateApplicationMain"),
+                .enableUpcomingFeature("ForwardTrailingClosures"),
+                .enableUpcomingFeature("ImplicitOpenExistentials"),
+                .enableUpcomingFeature("ImportObjcForwardDeclarations"),
+                .enableUpcomingFeature("InferSendableFromCaptures"),
+                .enableUpcomingFeature("GlobalConcurrency"),
+                .enableUpcomingFeature("DisableOutwardActorInference"),
+                .enableUpcomingFeature("RegionBasedIsolation"),
+                .enableExperimentalFeature("StrictConcurrency")
+            ]
         )
     ]
 )
