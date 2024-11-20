@@ -29,7 +29,8 @@ let package = Package(
                 .enableUpcomingFeature("GlobalConcurrency"),
                 .enableUpcomingFeature("DisableOutwardActorInference"),
                 .enableUpcomingFeature("RegionBasedIsolation"),
-                .enableExperimentalFeature("StrictConcurrency")
+                .enableExperimentalFeature("StrictConcurrency"),
+                .enableUpcomingFeature("GlobalActorIsolatedTypesUsability")
             ]
         )
     ]
