@@ -70,6 +70,7 @@ extension Publishers.HandleEvents: MainActorPublisher where Upstream: MainActorP
 extension Publishers.Timeout: MainActorPublisher where Upstream: MainActorPublisher, Context == UIScheduler2000 {}
 extension Publishers.TryMap: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.FirstWhere: MainActorPublisher where Upstream: MainActorPublisher {}
+extension Publishers.ReplaceError: MainActorPublisher where Upstream: MainActorPublisher {}
 
 extension Just: MainActorPublisher {}
 extension Empty: MainActorPublisher {}
