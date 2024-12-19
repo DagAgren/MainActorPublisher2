@@ -6,7 +6,7 @@
 ## What is it?
 
 `MainActorPublisher` is essentially just a marker protocol which inherits from `Publisher`,
-and adds nothing else. It is, however, meant as a promise that this `Publisher` will only
+and adds nothing else. It is meant as a promise that this `Publisher` will only
 ever fire on the main actor.
 
 ## Why do I want this?

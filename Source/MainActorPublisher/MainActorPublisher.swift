@@ -1,9 +1,19 @@
 import Combine
 import Foundation
 
+/// A sub-protocol of ``Publisher``, which adds no new functionality, but represents a promise
+/// that this publisher will only ever fire on the main actor.
 public protocol MainActorPublisher: Publisher {}
 
 extension MainActorPublisher {
+    /// Attaches a subscriber with closure-based behavior.
+    ///
+    /// Equivalent to ``Publisher/sink(receiveCompletion:receiveValue:)``, but with both
+    /// closures marked as `@MainActor`.
+    ///
+    /// - parameter receiveComplete: The closure to execute on completion.
+    /// - parameter receiveValue: The closure to execute on receipt of a value.
+    /// - Returns: A cancellable instance, which you use when you end assignment of the received value. Deallocation of the result will tear down the subscription stream.
     @MainActor public func sinkOnMainActor(
         receiveCompletion: @escaping @MainActor (Subscribers.Completion<Failure>) -> Void,
         receiveValue: @escaping @MainActor (Output) -> Void
@@ -18,6 +28,13 @@ extension MainActorPublisher {
         )
     }
 
+    /// Attaches a subscriber with closure-based behavior to a publisher that never fails.
+    ///
+    /// Equivalent to ``Publisher/sink(receiveValue:)``, but with both
+    /// closures marked as `@MainActor`.
+    ///
+    /// - parameter receiveValue: The closure to execute on receipt of a value.
+    /// - Returns: A cancellable instance, which you use when you end assignment of the received value. Deallocation of the result will tear down the subscription stream.
     @MainActor public func sinkOnMainActor(
         receiveValue: @escaping @MainActor (Output) -> Void
     ) -> AnyCancellable where Failure == Never {
@@ -28,6 +45,14 @@ extension MainActorPublisher {
 extension Publishers.ReceiveOn: MainActorPublisher where Context == MainActorScheduler {}
 
 extension Publisher {
+    /// Create a ``MainActorPublisher`` that is guaranteed to deliver all elements on the main actor.
+    ///
+    /// If this publisher is already firing on the main actor, this operator is essentially
+    /// a no-op, and elements will be delivered immediately without delay. If this publisher
+    /// fires on a different thread, it will schedule the elements to be delivered on the
+    /// main actor instead.
+    ///
+    /// - Returns: A ``MainActorPublisher`` that delivers elements on the main actor.
     @inlinable public func onMainActor() -> Publishers.ReceiveOn<Self, MainActorScheduler> {
         return receive(on: MainActorScheduler.shared)
     }

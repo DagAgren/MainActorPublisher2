@@ -1,6 +1,13 @@
 import Foundation
 import Combine
 
+/// A `Scheduler` implementation that always runs closures on the main actor.
+///
+/// If the execution is already taking place on the main actor, the code will be executed
+/// immediately, with no delay, so this scheduler is safe to use when you need code to be
+/// executed in the same runloop as it was invoked in.
+///
+/// This is similar to `ReactiveSwift`'s `UIScheduler`: https://reactivecocoa.io/reactiveswift/docs/latest/Classes/UIScheduler.html
 public struct MainActorScheduler: Scheduler, Sendable {
     public typealias SchedulerOptions = Never
     public typealias SchedulerTimeType = DispatchQueue.SchedulerTimeType
