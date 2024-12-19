@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-public struct UIScheduler2000: Scheduler, Sendable {
+public struct MainActorScheduler: Scheduler, Sendable {
     public typealias SchedulerOptions = Never
     public typealias SchedulerTimeType = DispatchQueue.SchedulerTimeType
 
