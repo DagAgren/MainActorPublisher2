@@ -51,6 +51,13 @@ some helper functions to convert a normal `Publisher` to a `MainActorPublisher`,
 actually moving the execution to the main actor (`.onMainActor()`), or by promising that
 it already is there (`.assumeIsolatedOnMainActor()`).
 
+## But does it actually work?
+
+Mostly. It's not quite perfect yet. The main thing missing is that `Publishers` contains
+an awful lot of different types, and we've only added extensions for those we actually use
+and the other most obvious ones. There are probably quite a few missing ones that still
+need to be added, so do fire off a PR if you do!
+
 ## License
 
 Copyright 2024 Wolt Enterprises Oy
