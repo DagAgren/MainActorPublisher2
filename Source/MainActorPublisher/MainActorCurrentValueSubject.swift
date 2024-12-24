@@ -4,7 +4,7 @@ import Combine
 ///
 /// Equivalent to `CurrentValueSubject` in Combine, but tagegd with `@MainActor` to enforce
 /// only using it on the main actor.
-public struct MainActorCurrentValueSubject<Output, Failure: Error>: MainActorPublisher {
+public final class MainActorCurrentValueSubject<Output, Failure: Error>: MainActorPublisher {
     private let currentValueSubject: CurrentValueSubject<Output, Failure>
 
     /// Creates a current value subject with the given initial value.
