@@ -2,17 +2,34 @@ import Combine
 import Foundation
 
 extension MainActorPublisher {
+    /// Wraps this publisher with a type eraser.
+    ///
+    /// This is similar to ``Publisher/eraseToAnyPublisher()``.
+    ///
+    /// - Returns: An ``AnyMainActorPublisher`` wrapping this publisher.
     @inlinable public func eraseToAnyMainActorPublisher() -> AnyMainActorPublisher<Output, Failure> {
         return .init(self)
     }
 }
 
 extension Publisher {
+    /// Wraps this publisher with a type eraser that assumes this publisher will only ever fire on the main actor.
+    ///
+    /// It is important to get this right, as getting it wrong will cause a crash.
+    ///
+    /// - Returns: An ``AnyMainActorPublisher`` wrapping this publisher.
     @inlinable public func assumeIsolatedOnMainActor() -> AnyMainActorPublisher<Output, Failure> {
         return .init(assumeIsolatedOnMainActor: self)
     }
 }
 
+/// A publisher that performs type erasure by wrapping another ``MainActorPublisher``.
+///
+/// This is similar to ``AnyPublisher``.
+///
+/// You can use ``MainActorPublisher/eraseToAnyMainActorPublisher()`` operator to wrap a ``MainActorPublisher`` with ``AnyMainActorPublisher``.
+///
+/// You can also use ``MainActorPublisher/assumeIsolatedOnMainActor()`` operator to wrap a regular ``Publisher`` with ``AnyMainActorPublisher`` if you know for sure it will only ever trigger on the main thread. Getting this wrong will cause a crash, however.
 public struct AnyMainActorPublisher<Output, Failure: Error>: CustomStringConvertible, CustomPlaygroundDisplayConvertible {
     private let box: PublisherBoxBase<Output, Failure>
 
