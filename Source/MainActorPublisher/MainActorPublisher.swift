@@ -40,6 +40,12 @@ extension MainActorPublisher {
     ) -> AnyCancellable where Failure == Never {
         sink { value in MainActor.assumeIsolated { receiveValue(value) } }
     }
+
+    @MainActor public func mapOnMainActor<T>(
+        _ transform: @escaping @MainActor (Self.Output) -> T
+    ) -> Publishers.Map<Self, T> {
+        map(transform)
+    }
 }
 
 extension Publishers.ReceiveOn: MainActorPublisher where Context == MainActorScheduler {}
