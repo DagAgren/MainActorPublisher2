@@ -102,6 +102,7 @@ extension Publishers.Timeout: MainActorPublisher where Upstream: MainActorPublis
 extension Publishers.TryMap: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.FirstWhere: MainActorPublisher where Upstream: MainActorPublisher {}
 extension Publishers.ReplaceError: MainActorPublisher where Upstream: MainActorPublisher {}
+extension Publishers.SwitchToLatest: MainActorPublisher where P: MainActorPublisher, Upstream: MainActorPublisher {}
 
 extension Just: MainActorPublisher {}
 extension Empty: MainActorPublisher {}
