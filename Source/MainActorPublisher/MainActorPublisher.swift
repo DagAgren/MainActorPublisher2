@@ -2,6 +2,7 @@ import Combine
 import Foundation
 
 // Test1
+// Test2
 
 /// A sub-protocol of ``Publisher``, which adds no new functionality, but represents a promise
 /// that this publisher will only ever fire on the main actor.
